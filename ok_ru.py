@@ -49,6 +49,16 @@ def get_post_details(post):
     post_details["share_count"] = share_count
     return post_details
 
-ok_html = get_html(URL)
-ok_posts = get_posts(ok_html)
-print(get_post_details(ok_posts[0]))
+def get_all_post_details(posts):
+    post_details_list = []
+    for post in posts:
+        post_details_list.append(get_post_details(post))
+    return post_details_list
+
+#entry point for parsing details from url
+def get_post_details_from_url(url):
+    ok_html = get_html(URL)
+    ok_posts = get_posts(ok_html)
+    return get_all_post_details(ok_posts)
+
+print(get_post_details_from_url(URL))
