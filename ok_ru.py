@@ -7,4 +7,9 @@ def get_html(url):
     return html
 
 ok_html = get_html('https://ok.ru/mil')
-print(ok_html)
+
+def get_posts(html):
+    posts = html.find_all('div', attrs={"class": "feed-w"})
+    return posts
+
+print(get_posts(ok_html))
